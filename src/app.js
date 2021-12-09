@@ -35,5 +35,6 @@ app.post('/register', user.registernUser);
 app.post('/creategroup', classes.createGroup);
 app.post('/getgroupmembers', classes.listGroup);
 app.post('/listgroupmemebers', classes.listGroupMembers);
+app.post('/addgroupmember', classes.addGroupMember);
 
 module.exports = app;
