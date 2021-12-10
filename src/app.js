@@ -7,6 +7,7 @@ const app = express();
 // ==> Rotas da API:
 const user = require('./routes/user');
 const classes = require('./routes/classes');
+const materiais = require('./routes/materiais');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -36,5 +37,17 @@ app.post('/creategroup', classes.createGroup);
 app.post('/getgroupmembers', classes.listGroup);
 app.post('/listgroupmemebers', classes.listGroupMembers);
 app.post('/addgroupmember', classes.addGroupMember);
+app.get('/cadernos', materiais.listarCadernos);
+app.post('/cadernos', materiais.criarCaderno);
+app.put('/cadernos', materiais.atualizarCaderno);
+app.delete('/cadernos', materiais.excluirCaderno);
+
+app.get('/galeria', materiais.listarImagens);
+app.post('/galeria', materiais.adicionarImagem);
+app.delete('/galeria', materiais.excluirImagem);
+
+app.get('/arquivos', materiais.listarArquivos);
+app.post('/arquivos', materiais.adicionarArquivo);
+app.delete('/arquivos', materiais.excluirArquivo);
 
 module.exports = app;

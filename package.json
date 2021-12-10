@@ -20,5 +20,8 @@
     "pg": "^8.7.1",
     "request-promise": "^4.2.6",
     "urllib": "^2.38.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

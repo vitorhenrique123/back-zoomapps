@@ -8,7 +8,7 @@ const db = require("../config/database");
 const payload = {
     iss: process.env.APIKey,
     exp: ((new Date()).getTime() + 5000)
-  };
+};
 const token = jwt.sign(payload, process.env.APISecret);
 
 
@@ -100,7 +100,7 @@ const listGroupMembers = (request, response) => {
     const jsopn = request.body;
     lismembers = getListmemeber(jsopn.group_id).then((reponse)=>{
         response.status(200).send({
-            reponse: reponse
+            response: reponse
         });
     })
 
@@ -140,7 +140,7 @@ const addGroupMember = (request, response) => {
     const jsopn = request.body;
     const options = {
         hostname: `api.zoom.us`, 
-        path: `/v2/groups/${jsopn[0].group_id}/members`,
+        path: `/v2/groups/${jsopn.group_id}/members`,
         method: 'POST',
         headers: {
             'User-Agent': 'Zoom-api-Jwt-Request',
@@ -148,7 +148,7 @@ const addGroupMember = (request, response) => {
             'Authorization': `Bearer ${token}`,
         },
     };
-    upload = getuserInfo(jsopn[0].email).then((res)=>{
+    upload = getuserInfo(jsopn.email).then((res)=>{
         var postData = JSON.stringify(
             {
                 "members": [
